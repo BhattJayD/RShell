@@ -28,6 +28,10 @@ function App() {
         >
           <h3>Reverse shell maker</h3>
         </div>
+        <div className="boxBody">
+          <div className="box">ip and port</div>
+          <div className="box">ip and port</div>
+        </div>
       </div>
     </div>
   );
