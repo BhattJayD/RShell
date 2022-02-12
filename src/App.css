@@ -28,19 +28,22 @@
 .boxBody {
   display: flex;
   justify-content: space-around;
-
-  /* align-items: center; */
   height: 40%;
-  /* background-color: brown; */
-
   padding: 10px;
 }
-.box {
+.boxLight {
   width: 45%;
   background-color: #f3f0d7;
   border-radius: 10px;
   padding: 10px;
   -webkit-box-shadow: 8px 16px 77px 5px rgba(70, 17, 17, 1);
-
-  /* height: ; */
+  color: #000;
+}
+.boxDark {
+  width: 45%;
+  background-color: #082032;
+  border-radius: 10px;
+  padding: 10px;
+  -webkit-box-shadow: 8px 16px 77px 5px rgba(70, 17, 17, 1);
+  color: #fff;
 }
