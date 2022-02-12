@@ -1,0 +1,27 @@
+.dark {
+  background-color: #082032;
+  width: 100vw;
+  height: 100vh;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: #fff;
+}
+.light {
+  background-color: #f3f0d7;
+  width: 100vw;
+  height: 100vh;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: #000;
+}
+.body {
+  height: 95vh;
+  width: 95vw;
+  border-radius: 20px;
+  padding: 5px;
+  -webkit-box-shadow: 8px 16px 77px 5px rgba(70, 17, 17, 1);
+}
